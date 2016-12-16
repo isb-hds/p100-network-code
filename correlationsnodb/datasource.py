@@ -443,9 +443,9 @@ class DataSource(object):
 
 class MicrobiomeDS(DataSource):
 
-    def __init__(self, database, tax=None, round=None):
+    def __init__(self, ds_id_map, part_df, data_dir, tax=None, round=None):
         self._aux = tax
-        DataSource.__init__(self, database, 'MICRO', aux=tax, round=round)
+        DataSource.__init__(self, ds_id_map, part_df, data_dir, 'MICRO', aux=tax, round=round)
 
     def annotate(self, t_id, format=None):
         if self._aux == 'diversity':
@@ -464,9 +464,9 @@ class MicrobiomeDS(DataSource):
 
 class MicrobiomeLogDS(MicrobiomeDS):
 
-    def __init__(self, database, tax=None, round=None):
+    def __init__(self, ds_id_map, part_df, data_dir, tax=None, round=None):
         self._aux = tax
-        DataSource.__init__(self, database, 'MICLN', aux=tax, round=round)
+        DataSource.__init__(self, ds_id_map, part_df, data_dir, 'MICLN', aux=tax, round=round)
 
 
     def _restrict_normalize(self, dataframe):
@@ -476,8 +476,8 @@ class MicrobiomeLogDS(MicrobiomeDS):
 
 class ChemistriesDS(DataSource):
 
-    def __init__(self, database, round=None):
-        DataSource.__init__(self, database, 'CHEMS', None, round=round)
+    def __init__(self, ds_id_map, part_df, data_dir, round=None):
+        DataSource.__init__(self,  ds_id_map, part_df, data_dir, 'CHEMS', None, round=round)
 
     def annotate(self, chem_id, format=None):
         if format is None:
@@ -487,8 +487,8 @@ class ChemistriesDS(DataSource):
 
 class MetabolomicsDS(DataSource):
 
-    def __init__(self, database, round=None):
-        DataSource.__init__(self, database, 'METAB', round=round)
+    def __init__(self,  ds_id_map, part_df, data_dir, round=None):
+        DataSource.__init__(self,  ds_id_map, part_df, data_dir, 'METAB', round=round)
 
     def annotate(self, met_id, format=None):
         if format is None:
@@ -499,8 +499,8 @@ class MetabolomicsDS(DataSource):
 
 class ProteomicsDS(DataSource):
 
-    def __init__(self, database, round=None):
-        DataSource.__init__(self, database, 'PROTE', None, round)
+    def __init__(self,  ds_id_map, part_df, data_dir, round=None):
+        DataSource.__init__(self,  ds_id_map, part_df, data_dir, 'PROTE', None, round)
 
     def annotate(self, prot_id, format=None):
         if format is None:
@@ -511,8 +511,8 @@ class ProteomicsDS(DataSource):
 
 class GenomicsDS(DataSource):
 
-    def __init__(self, database, type=None, round=None):
-        DataSource.__init__(self, database, 'GENOM', type, round=round)
+    def __init__(self,  ds_id_map, part_df, data_dir, type=None, round=None):
+        DataSource.__init__(self,  ds_id_map, part_df, data_dir, 'GENOM', type, round=round)
         self._aux = type
         # type is None of trait.  If trait, only combined traits will be
         # returned
@@ -535,8 +535,8 @@ class GenomicsDS(DataSource):
 
 class CoachFeedbackDS(DataSource):
 
-    def __init__(self, database, type=None, round=None):
-        DataSource.__init__(self, database, 'COACH', type, round=round)
+    def __init__(self,  ds_id_map, part_df, data_dir, type=None, round=None):
+        DataSource.__init__(self,  ds_id_map, part_df, data_dir, 'COACH', type, round=round)
         self._aux = 'coach'
         self._tset = None
 
