@@ -18,7 +18,7 @@ l_logger = logging.getLogger("p100.utils.correlations.analysis")
 
 class Analysis:
 
-    def __init__(self, ds_id_map, part_df):
+    def __init__(self, ds_id_map, part_df, data_dir):
 
         self._user_indices = None
         self._datasources = {}
@@ -29,6 +29,8 @@ class Analysis:
         l_logger.info("Initializing Analysis %s" % (self))
         self.ds_map = pandas.read_pickle(ds_id_map)
         self.part_df = part_df
+        self.ds_id_map = ds_id_map
+        self.data_dir = data_dir
 
 
     def GetResult(self, annotated=False,
@@ -51,7 +53,7 @@ class Analysis:
 
     def GetDataSources(self, type=None):
         ds_ids = self.ds_map.ds_id.unique().tolist()
-        dsf = DataSourceFactory()
+        dsf = DataSourceFactory(ds_id_map = self.ds_id_map, part_df=self.part_df, data_dir=self.data_dir)
         ds = []
         for ds_id in ds_ids:
             ds_obj = dsf.get_by_ds_id(ds_id)
@@ -71,7 +73,7 @@ class Analysis:
         return G
 
     def add_annotations(self, dataframe):
-        dsf = DataSourceFactory()
+        dsf = DataSourceFactory(ds_id_map = self.ds_id_map, part_df=self.part_df, data_dir=self.data_dir)
         for ds_id in dataframe.ds_id_1.unique():
             sel = (dataframe.ds_id_1 == ds_id)
             anno_df = dsf.get_by_ds_id(ds_id).annotations
@@ -87,8 +89,7 @@ class Analysis:
         return dataframe
 
     def add_entropy(self, dataframe):
-
-        dsf = DataSourceFactory()
+        dsf = DataSourceFactory(ds_id_map = self.ds_id_map, part_df=self.part_df, data_dir=self.data_dir)
         dfo = DataFrameOps()
         cache = {}
         for ds_id in dataframe.ds_id_1.unique():
