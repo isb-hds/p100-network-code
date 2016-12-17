@@ -34,5 +34,5 @@ Note, it will give you a warning about an invalid certificate, just click okay. 
   * [Community Generation-DELTA.ipynb](Community Generation-DELTA.ipynb) - Generates a correlation network for change in data measurements for the p100 project
   * [Community Generation.ipynb](Community Generation.ipynb) - Performs community analysis using the intraomic correlation network
   * [Community Generation-DELTA.ipynb](Community Generation-DELTA.ipynb) - Performs community analysis using the intraomic delta(change) correlation network
-  * [GEE longitudinal clinical changes.ipynb](GEE longitudinal clinical changes.ipynb) - Performs a GEE to demonstrate change over the course of the study in clinically relevant biomarkers
+  * [GEE longitudinal clinical changes.ipynb](GEE longitudinal clinical changes.ipynb) - Performs a GEE(generalized estimating equation) analysis to demonstrate change over the course of the study in clinically relevant biomarkers
   
