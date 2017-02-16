@@ -179,7 +179,7 @@ class Analysis:
                 ctr += 1
             else:
                 ignored += 1
-            if ctr % int(n / 10) == 0:
+            if n > 10 and ctr % int(n / 10) == 0:
                 l_logger.info("%i percent done" %
                               (int((ctr / n) * 100)))
         for _, _, pv, co in test_iter:
