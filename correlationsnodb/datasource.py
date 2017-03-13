@@ -191,7 +191,7 @@ class DataSource(object):
 
             # Merge the column with participant data
             sub = df.loc[:, [column]].merge(prt_data, left_index=True, right_on='username').dropna()
-            sub.columns = ['value', 'username', 'gender', 'age', 'ancestry', 'genome_id']
+            sub.columns = ['value', 'username', 'gender', 'age', 'ancestry']
 
             if (sub.shape[0]<20):
                 continue
@@ -216,7 +216,7 @@ class DataSource(object):
             # Merge the column with participant data
             sub = df.loc[:, [column]].merge(prt_data, left_index=True, right_on='username').dropna()
 
-            sub.columns = ['value', 'username', 'gender', 'age','ancestry', 'genome_id']
+            sub.columns = ['value', 'username', 'gender', 'age','ancestry']
 
             model = smf.rlm(formula='value~C(gender)', data=sub, M=statsmodels.robust.norms.TrimmedMean())
             res = model.fit()
@@ -284,7 +284,7 @@ class DataSource(object):
 
             # Merge the column with participant data
             sub = df.loc[:, [column]].merge(prt_data, left_index=True, right_on='username').dropna()
-            sub.columns = ['value', 'username', 'gender', 'age', 'ancestry', 'genome_id']
+            sub.columns = ['value', 'username', 'gender', 'age', 'ancestry']
 
             if (sub.shape[0]<20):
                 continue
@@ -309,7 +309,7 @@ class DataSource(object):
             # Merge the column with participant data
             sub = df.loc[:, [column]].merge(prt_data, left_index=True, right_on='username').dropna()
 
-            sub.columns = ['value', 'username', 'gender', 'age', 'ancestry', 'genome_id']
+            sub.columns = ['value', 'username', 'gender', 'age', 'ancestry']
 
             model = smf.rlm(formula='value~C(gender)', data=sub, M=statsmodels.robust.norms.TrimmedMean())
             res = model.fit()
