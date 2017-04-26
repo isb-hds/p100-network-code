@@ -6,7 +6,7 @@ This code is meant to be run in a Jupyter notebook that has the `scipy stack` in
 
 ## Data
 
-The data is available from dbGap, study id: 23313. It is a tar.gz file and should be extracted to the same directory containing the code.
+The data is available from dbGap, https://www.ncbi.nlm.nih.gov/projects/gapprev/gap/cgi-bin/preview1.cgi?GAP_phs_code=ECvAYTPhZnTzMyUY. It is a tar.gz file and should be extracted to the same directory containing the code.
 
 ## Recommended docker image
 
